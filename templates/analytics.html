@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ShortenMe</title>
+	<meta name="viewport", content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/styles.css">
+	<style>
+		body {
+			background: url('../static/img/background.jpg') center center no-repeat;
+		}
+	</style>
+</head>
+<body>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-success">
+	<a class="navbar-brand" href="#">ShortenMe</a>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+			<a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="/analytics">Analytics</a>
+		</div>
+	</div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="mx-auto col-xs-12">
+			<h1>URL Analytics</h1>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="mx-auto col-xs-12">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Original URL</th>
+						<th>Shorten URL</th>
+						<th>Hits</th>
+					</tr>
+				</thead>
+				<tbody>
+				   {% for url in urls_array%}
+						<tr>
+							<th>{{ url[0] }}</th>
+							<th><a href="{{ url[1] }}">{{ url[1] }}</a></th>
+							<th><a href="{{ host + url[2] }}">{{ host + url[2] }}</a></th>
+							<th>{{ url[3] }}</th>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>

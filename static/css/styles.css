@@ -1,0 +1,29 @@
+html, body {
+    height: 100%;
+}
+.h1 {
+    margin-bottom: 50px;
+}
+
+.navbar {
+    margin-bottom: 50px;
+}
+
+#top-section {
+    min-height: 10rem;
+}
+
+#about-section {
+    padding: 5rem 0 2rem 0;
+    text-align: center;
+}
+
+#tech-section img {
+    border-radius: 50%;
+    max-width: 125px;
+}
+
+.card {
+    padding: 4rem;
+    border: none;
+}

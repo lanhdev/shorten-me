@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>ShortenMe</title>
+	<meta name="viewport", content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/styles.css">
+	<style>
+		body {
+			background: url('../static/img/background.jpg') center center no-repeat;
+		}
+	</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-success">
+	<a class="navbar-brand" href="#">ShortenMe</a>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav">
+			<a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="/analytics">Analytics</a>
+		</div>
+	</div>
+</nav>
+
+<section id="top-section">
+	<div class="container">
+		<div class="row">
+			<div class="mx-auto col-xs-12">
+				<div class="form-inline">
+					<div class="form-group">
+						<form method="post">
+							<input type="text" name="original-url" placeholder="Enter your URL" class="form-control" style="margin-top: 50px; width:600px;">
+							<button type="submit" class="btn btn-success" style="margin-top: 50px;">Create</button>
+						</form>	
+					</div>
+				</div>
+				<br>
+				{% if shorten_url %}
+					<div class="alert alert-success" role="alert">
+						<strong>Shorten URL: </strong><a href="{{ shorten_url }}">{{ shorten_url }}</a>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="about-section">
+	<div class="container">
+		<p class="lead">This project uses <strong>Flask</strong> web framework, <strong>PostgreSQL</strong> and <strong>Bootstrap</strong>.</p>
+	</div>
+</section>
+</body>
+
+</html>
