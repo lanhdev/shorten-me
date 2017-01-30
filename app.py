@@ -1,6 +1,6 @@
 #app.py
 from flask import Flask, request, render_template, redirect
-from flask.ext.heroku import Heroku
+from flask.heroku import Heroku
 from urlparse import urlparse
 import random
 import string
