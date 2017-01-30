@@ -25,7 +25,7 @@ cursor = db.cursor()
 # ''')
 
 #Building web app
-host = 'http://127.0.0.1:5000/'
+host = 'https://lanhhoang-url-shorterner.herokuapp.com/'
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
