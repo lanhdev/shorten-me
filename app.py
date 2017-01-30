@@ -1,13 +1,25 @@
 #app.py
 from flask import Flask, request, render_template, redirect
 from flask_heroku import Heroku
-from urlparse import urlparse
+import os
 import random
 import string
 import psycopg2
+import urlparse
+
+urlparse.uses_netloc.append("postgres")
+url = urlparse.urlparse(os.environ["DATABASE_URL"])
+
+db = psycopg2.connect(
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port
+)
 
 #connecting to database
-db = psycopg2.connect("dbname=postgres")
+#db = psycopg2.connect("dbname=postgres")
 #set this mode so every statement is invoked immediately
 db.autocommit = True
 
