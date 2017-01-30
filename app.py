@@ -38,7 +38,7 @@ cursor = db.cursor()
 # ''')
 
 #Building web app
-host = 'https://lanhhoang-url-shorterner.herokuapp.com/'
+host = 'https://me-url-shorterner.herokuapp.com/'
 # host = 'http://127.0.0.1:5000/'
 app = Flask(__name__)
 heroku = Heroku(app)
