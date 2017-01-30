@@ -1,7 +1,6 @@
 #app.py
 from flask import Flask, request, render_template, redirect
 from flask_heroku import Heroku
-from urlparse import urlparse
 import os
 import random
 import string
@@ -20,7 +19,7 @@ db = psycopg2.connect(
 )
 
 #connecting to database
-#db = psycopg2.connect("dbname=postgres")
+# db = psycopg2.connect("dbname=postgres")
 #set this mode so every statement is invoked immediately
 db.autocommit = True
 
@@ -40,6 +39,7 @@ cursor = db.cursor()
 
 #Building web app
 host = 'https://lanhhoang-url-shorterner.herokuapp.com/'
+# host = 'http://127.0.0.1:5000/'
 app = Flask(__name__)
 heroku = Heroku(app)
 
@@ -78,15 +78,20 @@ def urls_analytics():
 	print urls_array
 	return render_template('analytics.html',host=host,urls_array=urls_array)
 
+@app.route('/<code>+')
+def url_analytics(code):
+	cursor.execute("SELECT * FROM urls WHERE code = %s",(code,))
+	id,original_url,code,hits = cursor.fetchone()
+	print cursor.fetchone()
+	return render_template('analytics.html',id=id,original_url=original_url,shorten_url=host+code,hits=hits)
+
 def valid_url_checker(original_url):
 	protocol_exist = False
-	protocols = ["http","https"]
+	protocols = ["http://","https://"]
 	if "." not in original_url:
 		return False
-	url = urlparse(original_url)
 	for protocol in protocols:
-		if url.scheme == protocol:
-			print url.scheme
+		if protocol in original_url:
 			protocol_exist = True
 	return protocol_exist
 
